@@ -1,8 +1,6 @@
 package com.wanted.backend.controller;
 
-
 import com.wanted.backend.dto.SignUpDto;
-import com.wanted.backend.entity.User;
 import com.wanted.backend.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
