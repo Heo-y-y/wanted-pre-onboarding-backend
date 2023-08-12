@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 @RestControllerAdvice
 public class CustomExceptionHandler {
     @ExceptionHandler(CustomException.class)
-    public ApiResponse handleException(CustomException e, HttpServletRequest request) {
+    public ExceptionResponse handleException(CustomException e, HttpServletRequest request) {
         log.error("errorCode : {}, url {}, message: {}", e.getCustomErrorCode(), request.getRequestURI(), e.getMessage());
-        return ApiResponse.builder()
+        return ExceptionResponse.builder()
                 .status(e.getCustomErrorCode())
                 .message(e.getMessage())
                 .build();

@@ -8,7 +8,7 @@ import lombok.Getter;
 @Getter
 @Builder
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class ApiResponse {
+public class ExceptionResponse {
     private final CustomErrorCode status;
     private final String message;
 }
