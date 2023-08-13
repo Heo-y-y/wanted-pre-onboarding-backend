@@ -1,11 +1,13 @@
 package com.wanted.backend.controller;
 
 import com.wanted.backend.dto.SignUpDto;
+import com.wanted.backend.entity.User;
+import com.wanted.backend.exception.ApiResponse;
 import com.wanted.backend.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,8 +24,9 @@ public class UserController {
 
     @ApiOperation(value = "회원가입")
     @PostMapping("/signup")
-    public ResponseEntity<Void> signUp(@Validated @RequestBody SignUpDto signUp) {
-        userService.registerUser(signUp.getEmail(), signUp.getPassword());
-        return ResponseEntity.ok().build();
+    public ResponseEntity<ApiResponse<User>> signUp(@Validated @RequestBody SignUpDto signUp) {
+        User user = userService.registerUser(signUp.getEmail(), signUp.getPassword());
+        ApiResponse<User> response = ApiResponse.IdCreated(user);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 }

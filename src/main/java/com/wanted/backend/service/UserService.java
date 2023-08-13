@@ -15,9 +15,10 @@ public class UserService {
     private final UserRepository userRepository;
 
     @Transactional
-    public void registerUser(String email, String password) {
+    public User registerUser(String email, String password) {
         if (userRepository.existsByEmail(email)) throw new CustomException(EXISTS_EMAIL);
         User user = User.of(email, password);
         userRepository.save(user);
+        return user;
     }
 }
