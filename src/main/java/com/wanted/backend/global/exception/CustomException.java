@@ -1,4 +1,4 @@
-package com.wanted.backend.exception;
+package com.wanted.backend.global.exception;
 
 import lombok.Getter;
 

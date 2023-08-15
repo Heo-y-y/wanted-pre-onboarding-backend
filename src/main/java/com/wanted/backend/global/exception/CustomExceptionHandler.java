@@ -1,4 +1,4 @@
-package com.wanted.backend.exception;
+package com.wanted.backend.global.exception;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
