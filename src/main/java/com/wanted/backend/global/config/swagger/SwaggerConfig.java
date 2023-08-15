@@ -1,4 +1,4 @@
-package com.wanted.backend.util;
+package com.wanted.backend.global.config.swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
