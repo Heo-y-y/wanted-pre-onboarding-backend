@@ -69,7 +69,7 @@ public class ApiResponse<T> {
         );
     }
 
-    public static <T> ApiResponse<T> GetPost(T data) {
+    public static <T> ApiResponse<T> getPost(T data) {
         return new ApiResponse<>(
                 CustomErrorCode.SEARCH_POST,
                 CustomErrorCode.SEARCH_POST.getMessage(),

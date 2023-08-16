@@ -4,11 +4,15 @@ import com.wanted.backend.domain.member.entity.Member;
 import com.wanted.backend.domain.member.repository.MemberRepository;
 import com.wanted.backend.domain.post.dto.PostCreateDto;
 import com.wanted.backend.domain.post.dto.PostUpdateDto;
+import com.wanted.backend.domain.post.dto.SearchPostsOfTheID;
 import com.wanted.backend.domain.post.entity.Post;
 import com.wanted.backend.domain.post.repository.PostRepository;
+import com.wanted.backend.global.exception.ApiResponse;
 import com.wanted.backend.global.exception.CustomErrorCode;
 import com.wanted.backend.global.exception.CustomException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -43,5 +47,11 @@ public class PostService {
     public void deletePost(Long postId, String email) {
         Post post = checkPermission(postId, email);
         post.deletePost();
+    }
+
+    @Transactional(readOnly = true)
+    public ResponseEntity<ApiResponse<SearchPostsOfTheID>> getSearchPost(Long postId) {
+        Post post = postRepository.findByIdAndIsDeleted(postId, false).orElseThrow(() -> new CustomException(CustomErrorCode.POST_NOT_FOUNT));
+        return ResponseEntity.status(HttpStatus.OK).body(ApiResponse.getPost(new SearchPostsOfTheID(post)));
     }
 }
