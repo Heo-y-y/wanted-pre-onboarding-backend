@@ -76,4 +76,12 @@ public class ApiResponse<T> {
                 data
         );
     }
+
+    public static <T> ApiResponse<T> getPosts(T data) {
+        return new ApiResponse<>(
+                CustomErrorCode.SUCCESS_POSTLIST,
+                CustomErrorCode.SUCCESS_POSTLIST.getMessage(),
+                data
+        );
+    }
 }

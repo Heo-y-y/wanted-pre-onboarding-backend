@@ -1,9 +1,10 @@
 package com.wanted.backend.domain.post.controller;
 
-import com.wanted.backend.domain.post.dto.PostCreateDto;
-import com.wanted.backend.domain.post.dto.PostUpdateDto;
 import com.wanted.backend.domain.post.dto.SearchPostsOfTheID;
 import com.wanted.backend.domain.post.service.PostService;
+import com.wanted.backend.domain.post.dto.PostCreateDto;
+import com.wanted.backend.domain.post.dto.PostUpdateDto;
+import com.wanted.backend.global.common.MultiResponseDto;
 import com.wanted.backend.global.exception.ApiResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -46,7 +47,14 @@ public class PostController {
 
     @ApiOperation(value = "게시글 조회")
     @GetMapping("/post/{post-id}")
-    public ResponseEntity<ApiResponse<SearchPostsOfTheID>> getPost(@PathVariable("post-id") Long postId, SearchPostsOfTheID searchPostsOfTheID) {
+    public ResponseEntity<ApiResponse<SearchPostsOfTheID>> getPost(@PathVariable("post-id") Long postId) {
         return postService.getSearchPost(postId);
+    }
+
+    @ApiOperation(value = "게시글 전체 조회")
+    @GetMapping("/post")
+    public ResponseEntity<ApiResponse<MultiResponseDto<SearchPostsOfTheID>>> findPosts(@RequestParam(defaultValue = "1") int page,
+                                                                         @RequestParam(defaultValue = "5") int size) {
+        return postService.getPosts(page - 1, size);
     }
 }

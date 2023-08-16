@@ -26,6 +26,7 @@ public enum CustomErrorCode {
     POST_CANNOT_ACCESS(HttpStatus.NOT_FOUND, "게시글 접근 권한이 없습니다."),
     UPDATE_POST(HttpStatus.OK, "게시글이 성공적으로 수정됐습니다."),
     SEARCH_POST(HttpStatus.OK, "해당 유저의 게시물을 성공적으로 불러왔습니다."),
+    SUCCESS_POSTLIST(HttpStatus.OK, "게시물을 성공적으로 불러왔씁니다."),
     DELETE_POST(HttpStatus.OK, "게시글 삭제에 성공했습니다.");
 
     private final HttpStatus status;
