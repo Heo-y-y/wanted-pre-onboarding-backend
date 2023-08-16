@@ -7,6 +7,8 @@ import lombok.*;
 import javax.persistence.Entity;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+
 @Entity
 @Builder
 @Getter
@@ -25,8 +27,10 @@ public class Post extends BaseTimeEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member memberId;
-    @Column
+    @Column(nullable = false)
     private Boolean isDeleted;
+    @Column
+    private LocalDateTime deleteAt;
 
     public static Post of(Member memberId, String title, String content) {
         return Post.builder()
@@ -35,5 +39,10 @@ public class Post extends BaseTimeEntity {
                 .content(content)
                 .isDeleted(false)
                 .build();
+    }
+
+    public void deletePost() {
+        this.isDeleted = true;
+        this.deleteAt = LocalDateTime.now();
     }
 }

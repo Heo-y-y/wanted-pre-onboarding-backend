@@ -60,4 +60,20 @@ public class ApiResponse<T> {
                 data
         );
     }
+
+    public static <T> ApiResponse<T> deletePost() {
+        return new ApiResponse<>(
+                CustomErrorCode.DELETE_POST,
+                CustomErrorCode.DELETE_POST.getMessage(),
+                null
+        );
+    }
+
+    public static <T> ApiResponse<T> GetPost(T data) {
+        return new ApiResponse<>(
+                CustomErrorCode.SEARCH_POST,
+                CustomErrorCode.SEARCH_POST.getMessage(),
+                data
+        );
+    }
 }

@@ -38,4 +38,10 @@ public class PostService {
         if (post.getMemberId() != member) throw new CustomException(CustomErrorCode.POST_CANNOT_ACCESS);
         return post;
     }
+
+    @Transactional
+    public void deletePost(Long postId, String email) {
+        Post post = checkPermission(postId, email);
+        post.deletePost();
+    }
 }

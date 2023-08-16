@@ -35,4 +35,11 @@ public class PostController {
         postService.updatePost(postId, postUpdateDto, userDetails.getUsername());
         return ResponseEntity.status(HttpStatus.OK).body(ApiResponse.updatePost(postUpdateDto));
     }
+
+    @ApiOperation(value = "게시글 삭제")
+    @DeleteMapping("/post/{post-id}")
+    public ResponseEntity<ApiResponse<Object>> deletePost(@PathVariable("post-id") Long postId, @AuthenticationPrincipal UserDetails userDetails) {
+        postService.deletePost(postId, userDetails.getUsername());
+        return ResponseEntity.status(HttpStatus.OK).body(ApiResponse.deletePost());
+    }
 }
