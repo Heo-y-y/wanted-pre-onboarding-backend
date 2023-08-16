@@ -9,8 +9,8 @@
 - DB: MySQL 8.0
 ### 애플리케이션 실행 방법
 MySQL DB 스키마 "wanted 생성 또는 application.yml 파일의 spring.datasource.url 항목에 적힌 "wanted" 을 적용하고 싶은 "본인의 스키마 명(ex.mydb)" 으로 변경하시고 진행해주세요.
-USERNAME : MySQL DB 계정
-PASSWORD : 계정의 비밀번호
+- USERNAME : MySQL DB 계정
+- PASSWORD : 계정의 비밀번호
 ### 데이터베이스 테이블 구조
 ![스크린샷 2023-08-17 오전 12 12 42](https://github.com/Heo-y-y/wanted-pre-onboarding-backend/assets/112863029/edd2e4de-2877-44d2-978e-fa0e3baadcf0)
 ### 구현한 API의 데모 영상 링크
