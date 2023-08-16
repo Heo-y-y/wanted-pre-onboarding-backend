@@ -44,4 +44,12 @@ public class ApiResponse<T> {
                 data
         );
     }
+
+    public static <T> ApiResponse<T> postCreated(T data) {
+        return new ApiResponse<>(
+                CustomErrorCode.CREATE_POST,
+                CustomErrorCode.CREATE_POST.getMessage(),
+                data
+        );
+    }
 }
