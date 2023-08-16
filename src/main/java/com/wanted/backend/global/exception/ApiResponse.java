@@ -13,7 +13,7 @@ public class ApiResponse<T> {
     private final String message;
     private final T data;
 
-    public static <T> ApiResponse<T> idCreated(T data) {
+    public static <T> ApiResponse<T> createId(T data) {
         return new ApiResponse<>(
                 CustomErrorCode.CREATED_ID,
                 CustomErrorCode.CREATED_ID.getMessage(),
@@ -41,6 +41,46 @@ public class ApiResponse<T> {
         return new ApiResponse<>(
                 CustomErrorCode.SUCCESS_LOGIN,
                 CustomErrorCode.SUCCESS_LOGIN.getMessage(),
+                data
+        );
+    }
+
+    public static <T> ApiResponse<T> createPost(T data) {
+        return new ApiResponse<>(
+                CustomErrorCode.CREATE_POST,
+                CustomErrorCode.CREATE_POST.getMessage(),
+                data
+        );
+    }
+
+    public static <T> ApiResponse<T> updatePost(T data) {
+        return new ApiResponse<>(
+                CustomErrorCode.UPDATE_POST,
+                CustomErrorCode.UPDATE_POST.getMessage(),
+                data
+        );
+    }
+
+    public static <T> ApiResponse<T> deletePost() {
+        return new ApiResponse<>(
+                CustomErrorCode.DELETE_POST,
+                CustomErrorCode.DELETE_POST.getMessage(),
+                null
+        );
+    }
+
+    public static <T> ApiResponse<T> getPost(T data) {
+        return new ApiResponse<>(
+                CustomErrorCode.SEARCH_POST,
+                CustomErrorCode.SEARCH_POST.getMessage(),
+                data
+        );
+    }
+
+    public static <T> ApiResponse<T> getPosts(T data) {
+        return new ApiResponse<>(
+                CustomErrorCode.SUCCESS_POSTLIST,
+                CustomErrorCode.SUCCESS_POSTLIST.getMessage(),
                 data
         );
     }
