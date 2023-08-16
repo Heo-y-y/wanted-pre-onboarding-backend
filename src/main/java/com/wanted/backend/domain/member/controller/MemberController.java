@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
-@Api(tags = "userController")
+@Api(tags = "UserController")
 @RequestMapping("/api")
 @RestController
 public class MemberController {
@@ -31,7 +31,7 @@ public class MemberController {
     @PostMapping("/sign-up")
     public ResponseEntity<ApiResponse<Member>> signUp(@Validated @RequestBody SignUpDto signUp) {
         Member user = memberService.registerUser(signUp.getEmail(), signUp.getPassword());
-        return ResponseEntity.status(HttpStatus.CREATED).body(ApiResponse.idCreated(user));
+        return ResponseEntity.status(HttpStatus.CREATED).body(ApiResponse.createId(user));
     }
 
     @ApiOperation(value = "로그인")

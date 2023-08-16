@@ -21,7 +21,10 @@ public enum CustomErrorCode {
     REFRESH_TOKEN_EXPIRED(HttpStatus.UNAUTHORIZED, "만료된 리프레시 토큰입니다"),
     REFRESH_TOKEN_NOT_FOUND(HttpStatus.UNAUTHORIZED, "존재하지 않는 리프레시 토큰입니다"),
     // 게시판
-    CREATE_POST(HttpStatus.CREATED, "게시글이 성공적으로 등록되었습니다.");
+    CREATE_POST(HttpStatus.CREATED, "게시글이 성공적으로 등록되었습니다."),
+    POST_NOT_FOUNT(HttpStatus.NOT_FOUND, "해당 게시글을 찾을 수 없습니다."),
+    POST_CANNOT_ACCESS(HttpStatus.NOT_FOUND, "게시글 접근 권한이 없습니다."),
+    UPDATE_POST(HttpStatus.OK, "게시글이 성공적으로 수정됐습니다.");
 
     private final HttpStatus status;
     private final String message;
