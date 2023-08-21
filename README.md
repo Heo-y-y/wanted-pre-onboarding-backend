@@ -1,6 +1,4 @@
 # wanted 사전과제
-## 지원자
-### 허윤영
 ### 개발 환경
 - IDE: IntelliJ IDEA Ultimate
 - Language: Java 11
